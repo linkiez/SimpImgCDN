@@ -3,17 +3,22 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "tsc",
-    "start": "ts-node --loader ./pnp.loader.mjs src/index.ts",
-    "watch": "tsc -w"
+    "serve": "nodemon",
+    "build": "rimraf dist && tsc",
+    "start": "cross-env NODE_ENV=production node --loader ts-node/esm --loader ./.pnp.loader.mjs src/index.ts",
+    "test": "jest",
+    "eslint": "eslint",
+    "sdk": "yarn dlx @yarnpkg/sdks vscode"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.21.2"
+    "cross-env": "^7.0.3",
+    "express": "^4.21.2",
+    "nodemon": "^3.1.9"
   },
   "devDependencies": {
     "@eslint/js": "^9.17.0",
